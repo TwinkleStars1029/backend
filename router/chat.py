@@ -19,11 +19,6 @@ router = APIRouter()
 
 load_dotenv()
 
-client = openai.AzureOpenAI(
-    api_key=os.getenv("AZURE_OPENAI_KEY"),
-    api_version="2025-01-01-preview",
-    azure_endpoint=  os.getenv("AZURE_OPENAI_ENDPOINT")
-)
 @router.post("/api/chat/send", response_model=ChatResponse)
 async def send_message(request: ChatRequest, db: Session = Depends(get_db)):
     """
