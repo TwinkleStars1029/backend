@@ -10,7 +10,7 @@ def ping():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    print(f"✅ 啟動 uvicorn 於 port {port}")
+    logger.info(f"✅ 嘗試啟動 uvicorn 於 port {port}")
     uvicorn.run("main:app", host="0.0.0.0", port=port)
 
 
