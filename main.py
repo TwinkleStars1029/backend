@@ -6,6 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 def ping():
+    logger.info(f"✅ 嘗試啟動 uvicorn ")
     return {"status": "ok"}
 
 if __name__ == "__main__":
