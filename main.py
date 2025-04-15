@@ -4,6 +4,7 @@ app = FastAPI()
 
 @app.get("/")
 def hello():
+    print("app started")
     return {"message": "Backend is workingW!"}
 
 
