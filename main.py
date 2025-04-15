@@ -1,10 +1,18 @@
 from fastapi import FastAPI
+import os
+import uvicorn
 
 app = FastAPI()
 
 @app.get("/")
 def ping():
     return {"status": "ok"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    print(f"✅ 啟動 uvicorn 於 port {port}")
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
 
 
 
