@@ -5,8 +5,8 @@ import os
 # 從環境變數讀取連線資訊（部署時更安全）
 DB_USER = os.getenv("DB_USER", "root")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "LvIKOhEJjuRIqPefDjnitvwQnoRKepTy")
-DB_HOST = os.getenv("DB_HOST", "mysql.railway.internal")
-DB_PORT = os.getenv("DB_PORT", "3306")
+DB_HOST = os.getenv("DB_HOST", "witchyard.proxy.rlwy.net")
+DB_PORT = os.getenv("DB_PORT", "15766")
 DB_NAME = os.getenv("DB_NAME", "railway")
 
 # 建立連線字串
