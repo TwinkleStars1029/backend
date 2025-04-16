@@ -49,6 +49,11 @@ def ping():
     logger.info("✅ ping 成功，後端正常運作中")
     return {"status": "ok"}
 
+@app.get("/api/ping")
+def api_ping():
+    logger.info("✅ /api/ping 成功被呼叫")
+    return {"status": "api is alive"}
+
 # 載入 router 模組
 from router import auth, chat, roles, memories, events, sessions, model_api
 app.include_router(auth.router)
