@@ -29,6 +29,7 @@ def register(user: schemas.UserRegister, db: Session = Depends(get_db)):
 # 🔐 登入會員
 @router.post("/login", response_model=schemas.TokenResponse)
 def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
+    print("登入帳號：", user.username)
     db_user = repository.get_user_by_username(db, user.username)
     if not db_user or not verify_password(user.password, db_user.password):
         raise HTTPException(status_code=401, detail="帳號或密碼錯誤")
