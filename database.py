@@ -3,14 +3,14 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
 # 從環境變數讀取連線資訊（部署時更安全）
-DB_USER = os.getenv("DB_USER", "root")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "LvIKOhEJjuRIqPefDjnitvwQnoRKepTy")
-DB_HOST = os.getenv("DB_HOST", "mysql.railway.internal")
+DB_USER = os.getenv("DB_USER", "User")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "User$1234")
+DB_HOST = os.getenv("DB_HOST", "mysql")
 DB_PORT = os.getenv("DB_PORT", "3306")
-DB_NAME = os.getenv("DB_NAME", "railway")
+DB_NAME = os.getenv("DB_NAME", "dreamlinker")
 
 # 建立連線字串
-DATABASE_URL = f"mysql+pymysql://root:LvIKOhEJjuRIqPefDjnitvwQnoRKepTy@switchyard.proxy.rlwy.net:15766/railway"
+DATABASE_URL = f"mysql+pymysql://User:User$1234@mysql:3306/dreamlinker"
 
 engine = create_engine(DATABASE_URL, echo=True)
 
