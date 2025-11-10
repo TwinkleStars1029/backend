@@ -1,31 +1,25 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-import os
+from sqlalchemy.engine import URL
 
-# 從環境變數讀取連線資訊（部署時更安全）
-DB_USER = os.getenv("DB_USER", "User")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "User$1234")
-DB_HOST = os.getenv("DB_HOST", "mysql")
-DB_PORT = os.getenv("DB_PORT", "3306")
-DB_NAME = os.getenv("DB_NAME", "dreamlinker")
+url = URL.create(
+    drivername="mysql+mysqlconnector",
+    username="User",
+    password="User$1234",  # 這裡可直接放原文，不需手動編碼
+    host="tpe1.clusters.zeabur.com",
+    port=21004,
+    database="dreamlinker",
+    query={"charset": "utf8mb4"},
+)
 
-# 建立連線字串
-DATABASE_URL = f"mysql+pymysql://User:User$1234@tpe1.clusters.zeabur.com:21004/my_chat_app"
-
-engine = create_engine(DATABASE_URL, echo=True)
-
-# 建立 Session
+engine = create_engine(url, echo=True, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# 定義 ORM 的 Base 類別
 Base = declarative_base()
 
-# 🚀 建立資料表
 def init_db():
-    from models import Base  # 避免循環引用
+    from models import Base
     Base.metadata.create_all(bind=engine)
 
-# 取得 DB Session
 def get_db():
     db = SessionLocal()
     try:
