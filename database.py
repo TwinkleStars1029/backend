@@ -10,8 +10,7 @@ DB_PORT = os.getenv("DB_PORT", "3306")
 DB_NAME = os.getenv("DB_NAME", "dreamlinker")
 
 # 建立連線字串
-DATABASE_URL = "mysql+pymysql://User:User$1234@mysql:3306/dreamlinker"
-
+DATABASE_URL = f"mysql+pymysql://User:User$1234@tpe1.clusters.zeabur.com:21004/my_chat_app"
 
 engine = create_engine(DATABASE_URL, echo=True)
 
